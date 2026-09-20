@@ -5,7 +5,7 @@ import random
 # Game settings
 # -----------------------------
 
-GRID_SIZE = 14
+GRID_SIZE = 7
 
 
 # -----------------------------
@@ -113,16 +113,16 @@ for row in range(GRID_SIZE):
         position = (row, col)
 
         if position == st.session_state.snake[0]:
-            row_display += "🐍 "
+            row_display += "🐍    "
 
         elif position in st.session_state.snake:
-            row_display += "🟢 "
+            row_display += "🟢    "
 
         elif position == st.session_state.food:
-            row_display += "🍎 "
+            row_display += "🍎    "
 
         else:
-            row_display += "⬜  "
+            row_display += "⬜    "
 
     st.write(row_display)
 
@@ -170,10 +170,10 @@ else:
         row2 = st.columns(3)
         row3 = st.columns(3)
     
-        up    = row1[1].button("⬆️",    key="up",    use_container_width=True)
-        left  = row2[0].button("⬅️",  key="left",  use_container_width=True)
-        right = row2[2].button("➡️", key="right", use_container_width=True)
-        down  = row3[1].button("⬇️",  key="down",  use_container_width=True)
+        up    = row1[1].button("🔼",    key="up",    use_container_width=True)
+        left  = row2[0].button("◀️",  key="left",  use_container_width=True)
+        right = row2[2].button("▶️", key="right", use_container_width=True)
+        down  = row3[1].button("🔽",  key="down",  use_container_width=True)
     
     if up:
         move_snake("UP")
