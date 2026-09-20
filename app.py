@@ -5,7 +5,8 @@ import random
 # Game settings
 # -----------------------------
 
-GRID_SIZE = 7
+GRID_SIZE_ROW = 7
+GRID_SIZE_COL = 14
 
 
 # -----------------------------
@@ -50,9 +51,9 @@ def move_snake(direction):
     # Check if the snake hits the wall
     if (
         new_head[0] < 0
-        or new_head[0] >= GRID_SIZE
+        or new_head[0] >= GRID_SIZE_ROW
         or new_head[1] < 0
-        or new_head[1] >= GRID_SIZE
+        or new_head[1] >= GRID_SIZE_COL
     ):
         st.session_state.game_over = True
         return
@@ -74,8 +75,8 @@ def move_snake(direction):
         # Find a new food position
         empty_spaces = []
 
-        for row in range(GRID_SIZE):
-            for col in range(GRID_SIZE):
+        for row in range(GRID_SIZE_ROW):
+            for col in range(GRID_SIZE_COL):
 
                 if (row, col) not in st.session_state.snake:
                     empty_spaces.append((row, col))
@@ -104,25 +105,25 @@ st.subheader(f"🏆 Score: {st.session_state.score}")
 # Draw the grid
 # -----------------------------
 
-for row in range(GRID_SIZE):
+for row in range(GRID_SIZE_ROW):
 
     row_display = ""
 
-    for col in range(GRID_SIZE):
+    for col in range(GRID_SIZE_COL):
 
         position = (row, col)
 
         if position == st.session_state.snake[0]:
-            row_display += "🐍    "
+            row_display += "🐍     "
 
         elif position in st.session_state.snake:
-            row_display += "🟢    "
+            row_display += "🟢      "
 
         elif position == st.session_state.food:
-            row_display += "🍎    "
+            row_display += "  🍎   "
 
         else:
-            row_display += "⬜    "
+            row_display += "⬜   "
 
     st.write(row_display)
 
@@ -147,20 +148,6 @@ if st.session_state.game_over:
 else:
 
     st.markdown("## 🎮 Controls")
-
-    st.markdown("""
-    <style>
-    /* Only affects buttons inside the container keyed "dpad" */
-    .st-key-dpad button {
-        height: 90px;
-        border-radius: 16px;
-    }
-    .st-key-dpad button p {
-        font-size: 90px;   /* <- change this to make icons bigger/smaller */
-        line-height: 1;
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
     # Narrow column so the pad stays compact instead of stretching across the page
     pad, _ = st.columns([1, 2])
