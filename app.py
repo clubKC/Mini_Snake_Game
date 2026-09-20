@@ -148,6 +148,20 @@ else:
 
     st.markdown("## 🎮 Controls")
 
+    st.markdown("""
+    <style>
+    /* Only affects buttons inside the container keyed "dpad" */
+    .st-key-dpad button {
+        height: 90px;
+        border-radius: 16px;
+    }
+    .st-key-dpad button p {
+        font-size: 48px;   /* <- change this to make icons bigger/smaller */
+        line-height: 1;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
     # Narrow column so the pad stays compact instead of stretching across the page
     pad, _ = st.columns([1, 2])
     
