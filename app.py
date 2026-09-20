@@ -146,27 +146,30 @@ if st.session_state.game_over:
 
 else:
 
-    st.write("### 🎮 Controls")
+    st.markdown("## 🎮 Controls")
 
-    # Up button
-    if st.button("⬆️ UP"):
+    # Narrow column so the pad stays compact instead of stretching across the page
+    pad, _ = st.columns([1, 2])
+    
+    with pad:
+        row1 = st.columns(3)
+        row2 = st.columns(3)
+        row3 = st.columns(3)
+    
+        up    = row1[1].button("⬆️ UP",    key="up",    use_container_width=True)
+        left  = row2[0].button("⬅️ LEFT",  key="left",  use_container_width=True)
+        right = row2[2].button("➡️ RIGHT", key="right", use_container_width=True)
+        down  = row3[1].button("⬇️ DOWN",  key="down",  use_container_width=True)
+    
+    if up:
         move_snake("UP")
         st.rerun()
-
-    # Left, Down and Right buttons
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        if st.button("⬅️ LEFT"):
-            move_snake("LEFT")
-            st.rerun()
-
-    with col2:
-        if st.button("⬇️ DOWN"):
-            move_snake("DOWN")
-            st.rerun()
-
-    with col3:
-        if st.button("➡️ RIGHT"):
-            move_snake("RIGHT")
-            st.rerun()
+    elif down:
+        move_snake("DOWN")
+        st.rerun()
+    elif left:
+        move_snake("LEFT")
+        st.rerun()
+    elif right:
+        move_snake("RIGHT")
+        st.rerun()
