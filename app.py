@@ -5,7 +5,7 @@ import random
 # Game settings
 # -----------------------------
 
-GRID_SIZE = 7
+GRID_SIZE = 14
 
 
 # -----------------------------
@@ -156,7 +156,7 @@ else:
         border-radius: 16px;
     }
     .st-key-dpad button p {
-        font-size: 48px;   /* <- change this to make icons bigger/smaller */
+        font-size: 90px;   /* <- change this to make icons bigger/smaller */
         line-height: 1;
     }
     </style>
