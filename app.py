@@ -156,10 +156,10 @@ else:
         row2 = st.columns(3)
         row3 = st.columns(3)
     
-        up    = row1[1].button("⬆️ UP",    key="up",    use_container_width=True)
-        left  = row2[0].button("⬅️ LEFT",  key="left",  use_container_width=True)
-        right = row2[2].button("➡️ RIGHT", key="right", use_container_width=True)
-        down  = row3[1].button("⬇️ DOWN",  key="down",  use_container_width=True)
+        up    = row1[1].button("⬆️",    key="up",    use_container_width=True)
+        left  = row2[0].button("⬅️",  key="left",  use_container_width=True)
+        right = row2[2].button("➡️", key="right", use_container_width=True)
+        down  = row3[1].button("⬇️",  key="down",  use_container_width=True)
     
     if up:
         move_snake("UP")
